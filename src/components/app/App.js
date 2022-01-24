@@ -15,7 +15,6 @@ function App() {
             <main className="main">
                 <div className="container">
                     <h2 className="main__title">main</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, veritatis?</p>
                 </div>
             </main>
 
