@@ -2,7 +2,6 @@
 
 # MyFiles
 *.txt
-/package-lock.json
 
 
 # dependencies
