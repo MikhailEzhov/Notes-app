@@ -1,0 +1,44 @@
+.header {
+    margin-top: 50px;
+    margin-bottom: 40px;
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 43px;
+    }
+
+    &__nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__search {
+        background: #3b3b3b;
+        border-radius: 15px;
+        width: 50px;
+        height: 50px;
+        background-image: url(../../img/icon-search.svg);
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: center;
+        @import "../../scss/animation-elements";
+    }
+
+    &__info {
+        background: #3b3b3b;
+        border-radius: 15px;
+        width: 50px;
+        height: 50px;
+        background-image: url(../../img/icon-info.svg);
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: center;
+        @import "../../scss/animation-elements";
+    }
+}

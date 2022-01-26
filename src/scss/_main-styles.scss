@@ -9,20 +9,22 @@ body {
     line-height: $lineHeightMain; // не трогай
     color: $fontColorMain; // не трогай
     background-color: $backgroundColorMain; // не трогай
+    min-width: 320px; // помогла при появлении нижнего скрола на телефонах
     // position: relative; // сам решай
-    // overflow-x: hidden; // сам решай
+    // overflow: hidden; // сам решай
 }
 
 // самая верхняя оболочка (был wrapper, а сейчас app)
 .app {
     min-height: 100%; // не трогай
+    // position: relative;
 }
 
 // контент
 .container {
     max-width: $maxWidthContentPX; // не трогай
     margin: 0 auto; // не трогай
-    padding: 0px 10px; // сам решай
+    padding: 0 25px; // сам решай
     min-width: $minWidthContentPX; // не трогай
 }
 

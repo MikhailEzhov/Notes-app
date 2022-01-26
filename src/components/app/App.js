@@ -1,31 +1,39 @@
+import { Component } from 'react';
+import AppHeader from '../app-header/App-header';
+
+import createPicture from '../../img/create_a_note.svg';
 import './app.scss';
 
 
-function App() {
-    return (
-        <div className="app">
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+        }
+    }
 
-            <header className="header">
-                <div className="container">
-                    <h1 className="header__title">header</h1>
-                </div>
-            </header>
-
-            <main className="main">
-                <div className="container">
-                    <h2 className="main__title">main</h2>
-                    <p className="main__description">Lorem ipsum dolor sit amet.</p>
-                </div>
-            </main>
-
-            <footer className="footer">
-                <div className="container">
-                    <h2 className="footer__title">footer</h2>
-                </div>
-            </footer>
-
-        </div>
-    )
+    render() {
+        return (
+            <div className="app">
+    
+                <AppHeader></AppHeader>
+    
+                <main className="main">
+                    <div className="container">
+    
+                        <div className="main__create-first">
+                            <img className="main__create-picture" src={createPicture} alt="Create your first note" />
+                            <span className="main__create-title">Create your first note !</span>
+                        </div>
+    
+                        <button className="main__btn-create"></button>
+                    </div>
+                </main>
+    
+            </div>
+        )
+    }
 }
 
 export default App;

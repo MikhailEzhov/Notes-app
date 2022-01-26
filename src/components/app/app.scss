@@ -1,26 +1,35 @@
-.header {
-    &__title {
-        display: flex;
-        justify-content: flex-start;
-    }
-}
 
 .main {
-    &__title {
-        display: flex;
-        justify-content: center;
-        color: blue;
-    }
-    &__description {
-        display: flex;
-        justify-content: center;
-    }
-}
 
-.footer {
-    &__title {
+    &__create-first {
         display: flex;
-        justify-content: flex-end;
-        color: red;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__create-picture {
+        max-width: 100%;
+    }
+
+    &__create-title {
+        font-weight: 300;
+        font-size: 20px;
+    }
+
+    &__btn-create {
+        position: fixed;
+        bottom: 50px;
+        right: 25px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #252525;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4), -5px 0px 10px rgba(0, 0, 0, 0.4);
+        background-image: url(../../img/icon-add.svg);
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: center;
+        @import "../../scss/animation-elements";
     }
 }
