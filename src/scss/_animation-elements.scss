@@ -4,6 +4,7 @@
     text-decoration: none; // убираю подчеркивание, если это ссылка
     user-select: none; // запрещаю выделение текста
     transition: all 250ms; // анимация
+    -webkit-tap-highlight-color: transparent; // на mobile убирает синий фон при нажатии кнопки
 }
 
 // когда элемент в фокусе - выбран:
