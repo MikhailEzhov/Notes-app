@@ -1,4 +1,4 @@
-.notes-edit {
+.notes-add {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,6 +20,21 @@
         @import "../../scss/animation-elements";
     }
 
+    &__btn-save {
+        position: absolute;
+        top: 50px;
+        right: 10%;
+        width: 50px;
+        height: 50px;
+        background: #3b3b3b;
+        border-radius: 15px;
+        background-image: url(../../img/icon-save.svg);
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        @import "../../scss/animation-elements";
+    }
+
     &__title {
         outline: none;
         width: 80%;
@@ -29,7 +44,7 @@
         font-size: 35px;
         line-height: 48px;
         color: #ffffff;
-        resize:none;
+        resize: none;
     }
 
     &__description {
@@ -41,10 +56,10 @@
         font-size: 23px;
         line-height: 31px;
         color: #ffffff;
-        resize:none;
+        resize: none;
     }
 }
 
-.edit-none {
+.add-none {
     display: none;
 }

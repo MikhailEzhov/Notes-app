@@ -3,7 +3,6 @@ import { Component } from 'react';
 import './app-info.scss';
 
 
-
 class AppInfo extends Component  {
     constructor(props) {
         super(props);

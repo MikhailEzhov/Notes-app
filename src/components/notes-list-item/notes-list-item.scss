@@ -1,0 +1,17 @@
+.notes-item {
+    background: #FFF599;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+
+    &__title {
+        font-size: 25px;
+        font-weight: normal;
+        color: #000000;
+        padding: 25px 40px;
+    }
+
+    &__description {
+        display: none;
+    }
+}

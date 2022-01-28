@@ -8,16 +8,26 @@ class NotesList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
-    
+
+
     render() {
+        const {data, onDelete} = this.props;         // диструктурируем свойство из props
+
+
+        const elements = data.map((item, index) => {
+            return (
+                <NotesListItem key={index} 
+                {...item}
+                onDelete={() => onDelete(index)}/>
+            )
+        })
+
+
         return (
             <ul className="notes-list">
-                <NotesListItem/>
-                <NotesListItem/>
-                <NotesListItem/>
+                {elements}
             </ul>
         )
     }
