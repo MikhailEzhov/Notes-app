@@ -1,52 +1,69 @@
 import { Component } from 'react';
+
 import AppInfo from '../app-info/App-info';
 import NotesSearch from '../notes-search/Notes-search';
 
 import './app-header.scss';
 
 
+
 class AppHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            appInfo: 'info-none',    // начальное состояние выключенное
-            notesSearch: 'search-none'    // начальное состояние выключенное
+            appInfo: 'info-none', // скрыто
+            notesSearch: 'search-none' // скрыто
         }
     }
 
-    onAppInfo = () => {             // меняет начальное состояние у appInfo - включаем
+
+
+    // Локальный метод для показа AppInfo
+    onAppInfo = () => {
 		this.setState(appInfo => ({
 			appInfo: 'info'
 		}))
 	}
 
-    offAppInfo = () => {            // меняет начальное состояние у appInfo - выкл
+    // Локальный метод для скрытия AppInfo
+    offAppInfo = () => {
 		this.setState(appInfo => ({
 			appInfo: 'info-none'
 		}))
 	}
+    //==================================================
 
-    onNotesSearch = () => {             // меняет начальное состояние у notesSearch - включаем
+
+
+    // Локальный метод для показа NotesSearch
+    onNotesSearch = () => {  
 		this.setState(notesSearch => ({
 			notesSearch: 'notes-search'
 		}))
 	}
 
-    offNotesSearch = () => {             // меняет начальное состояние у notesSearch - выкл
+    // Локальный метод для скрытия NotesSearch
+    offNotesSearch = () => {
 		this.setState(notesSearch => ({
 			notesSearch: 'search-none'
 		}))
 	}
+    //==================================================
+
 
 
     render() {
-        const {appInfo, notesSearch} = this.state;    // диструктурируем состояния из state
+        const {onUpdateSearch} = this.props; // диструктурием свойства, которые пришли из props
+        const {appInfo, notesSearch} = this.state; // диструктурируем состояния из state
 
         return (
             <header className="header">
                 <div className="container">
                     <div className="header__main">
-                        <NotesSearch notesSearch={notesSearch} offNotesSearch={this.offNotesSearch}/>
+                        <NotesSearch 
+                            notesSearch={notesSearch} 
+                            offNotesSearch={this.offNotesSearch}
+                            onUpdateSearch={onUpdateSearch}/>
                         <h1 className="header__title">Notes</h1>
                         <nav className="header__nav">
                             <button className="header__search" onClick={() => this.onNotesSearch()}></button>

@@ -3,35 +3,45 @@ import { Component } from 'react';
 import './notes-add.scss';
 
 
+
 class NotesAdd extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            description: ''
+            title: '', // начальное пустое
+            description: '' // начальное пустое
         }
     }
 
-    // метод динамически меняет state, исходя что ввели в textarea:
+
+
+    // Локальный метод: меняет state, исходя что ввели в textarea:
     onValueChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value // ориентируется на атрибут name
         })
     }
+    //==================================================
 
-    // метод для добавления нового
+
+
+    // Локальный метод для создания нового экземпляра:
     onNewCreate = () => {
         if (this.state.title.length < 1) return; // проверка, чтобы не добавлять пустые заметки
-        this.props.onAdd(this.state.title, this.state.description);
+        // поднимаем состояние наверх и передаёт аргументы:
+        this.props.onAdd(this.state.title, this.state.description); // - пришло из другого компонента
         this.setState({
             title: '',
             description: ''
         })
     }
-    
+    //==================================================
+
+
+
     render() {
-        const {notesAdd, offNotesAdd} = this.props;    // диструктурировали свойства, которые пришли из props
-        const {title, description} = this.state;         // диструктурируем состояния из state
+        const {notesAdd, offNotesAdd} = this.props; // диструктурируем свойства, которые пришли из props
+        const {title, description} = this.state; // диструктурируем состояния из state
 
         return (
             <div className={notesAdd}>

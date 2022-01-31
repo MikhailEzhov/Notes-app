@@ -1,7 +1,9 @@
 import { Component } from 'react';
+
 import NotesListItem from '../notes-list-item/Notes-list-item';
 
 import './notes-list.scss';
+
 
 
 class NotesList extends Component {
@@ -12,18 +14,20 @@ class NotesList extends Component {
     }
 
 
+
     render() {
-        const {data, onDelete} = this.props;         // диструктурируем свойство из props
+        const {data, onDelete, onNotesEditing} = this.props; // диструктурием свойства, которые пришли из props
 
-
-        const elements = data.map((item, index) => {
+        const elements = data.map(item => {
+            const {id, ...itemProps} = item;
             return (
-                <NotesListItem key={index} 
-                {...item}
-                onDelete={() => onDelete(index)}/>
+                <NotesListItem 
+                    key={id} 
+                    {...itemProps}
+                    onDelete={() => onDelete(id)}
+                    onNotesEditing={onNotesEditing}/>
             )
         })
-
 
         return (
             <ul className="notes-list">

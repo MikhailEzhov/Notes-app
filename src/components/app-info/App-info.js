@@ -3,6 +3,7 @@ import { Component } from 'react';
 import './app-info.scss';
 
 
+
 class AppInfo extends Component  {
     constructor(props) {
         super(props);
@@ -10,8 +11,10 @@ class AppInfo extends Component  {
         }
     }
 
+
+
     render() {
-        const {appInfo, offAppInfo} = this.props;    // диструктурировали свойства, которые пришли из props
+        const {appInfo, offAppInfo} = this.props; // диструктурием свойства, которые пришли из props
 
         return (
             <div className={appInfo} onClick={() => offAppInfo()}>
@@ -20,6 +23,5 @@ class AppInfo extends Component  {
         )
     }
 }
-
 
 export default AppInfo;

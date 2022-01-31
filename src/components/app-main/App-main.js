@@ -2,49 +2,72 @@ import { Component } from 'react';
 
 import NotesList from '../notes-list/Notes-list';
 import NotesAdd from '../notes-add/Notes-add';
+import NotesEditing from '../notes-editing/Notes-editing';
 
-import createPicture from '../../img/create_a_note.svg';
 import './app-main.scss';
+
 
 
 class AppMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            notesAdd: 'add-none'    // начальное состояние выключенное
+            notesAdd: 'add-none', // скрыто
+            notesEditing: 'editing-none', // скрыто
         }
     }
 
-    onNotesAdd = () => {             // меняет начальное состояние у notesAdd - включаем
-        window.scrollTo(0,0);           // прокручию в самый верх
+
+
+    // Локальный метод для показа NotesAdd
+    onNotesAdd = () => {
+        window.scrollTo(0,0); // прокручию в самый верх
 		this.setState(notesAdd => ({
 			notesAdd: 'notes-add'
 		}))
 	}
-
-    offNotesAdd = () => {            // меняет начальное состояние у notesAdd - выкл
+    // Локальный метод для скрытия NotesAdd
+    offNotesAdd = () => {     
 		this.setState(notesAdd => ({
 			notesAdd: 'add-none'
 		}))
 	}
+    //==================================================
+
+
+
+    // Локальный метод для показа NotesEditing
+    onNotesEditing = () => {
+        window.scrollTo(0,0); // прокручию в самый верх
+		this.setState(notesEditing => ({
+			notesEditing: 'notes-editing'
+		}))
+	}
+    // Локальный метод для скрытия NotesEditing
+    offNotesEditing = () => {     
+		this.setState(notesEditing => ({
+			notesEditing: 'editing-none'
+		}))
+	}
+    //==================================================
+
+
 
     render() {
-        const {notesAdd} = this.state;    // диструктурируем состояния из state
-        const {data, deleteItem, onAdd} = this.props;         // диструктурируем свойство из props
+        const {data, deleteItem, onAdd} = this.props; // диструктурием свойства, которые пришли из props
+        const {notesAdd, notesEditing} = this.state; // диструктурируем состояния из state
 
         return (
             <main className="main">
                 <div className="container">
 
-                    {/* <div className="main__create-first">
-                        <img className="main__create-picture" src={createPicture} alt="Create your first note"/>
-                        <span className="main__create-title">Create your first note !</span>
-                    </div> */}
-                    
+                    {/* список */}
                     <NotesList 
                         data={data}
-                        onDelete={deleteItem}/>
+                        onDelete={deleteItem}
+                        onNotesEditing={this.onNotesEditing}/>
 
+                    {/* добавление заметки */}
                     <button 
                         className="main__btn-create" 
                         onClick={() => this.onNotesAdd()}>
@@ -53,6 +76,12 @@ class AppMain extends Component {
                         notesAdd={notesAdd} 
                         offNotesAdd={this.offNotesAdd}
                         onAdd={onAdd}/>
+
+                    {/* редактрование заметки */}
+                    <NotesEditing 
+                        notesEditing={notesEditing}
+                        offNotesEditing={this.offNotesEditing}/>
+
                 </div>
             </main>
         )

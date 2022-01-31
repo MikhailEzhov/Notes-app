@@ -1,0 +1,66 @@
+.notes-editing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5000px;
+    background: #252525;
+    z-index: 3;
+
+    &__btn-back {
+        margin: 50px 0 40px 10%;
+        width: 50px;
+        height: 50px;
+        background: #3b3b3b;
+        border-radius: 15px;
+        background-image: url(../../img/icon-back.svg);
+        background-repeat: no-repeat;
+        background-size: 30%;
+        background-position: center;
+        @import "../../scss/animation-elements";
+    }
+
+    &__btn-save {
+        position: absolute;
+        top: 50px;
+        right: 10%;
+        width: 50px;
+        height: 50px;
+        background: #3b3b3b;
+        border-radius: 15px;
+        background-image: url(../../img/icon-save.svg);
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        @import "../../scss/animation-elements";
+        display: none;
+    }
+
+    &__title {
+        outline: none;
+        width: 80%;
+        margin: 0 10% 40px 10%;
+        height: 2%;
+        background-color: #252525;
+        font-size: 35px;
+        line-height: 48px;
+        color: #ffffff;
+        resize: none;
+    }
+
+    &__description {
+        outline: none;
+        width: 80%;
+        margin: 0 10%;
+        height: 3%;
+        background-color: #252525;
+        font-size: 23px;
+        line-height: 31px;
+        color: #ffffff;
+        resize: none;
+    }
+}
+
+.editing-none {
+    display: none;
+}
