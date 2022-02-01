@@ -16,16 +16,20 @@ class NotesList extends Component {
 
 
     render() {
-        const {data, onDelete, onNotesEditing} = this.props; // диструктурием свойства, которые пришли из props
+        const {data, onDelete, onNotesEditing, transferTitle, transferDescription} = this.props; // диструктурием свойства, которые пришли из props
 
         const elements = data.map(item => {
             const {id, ...itemProps} = item;
+            const {title} = item; // for transferTitle
+            const {description} = item; // for transferDescription
             return (
                 <NotesListItem 
                     key={id} 
                     {...itemProps}
                     onDelete={() => onDelete(id)}
-                    onNotesEditing={onNotesEditing}/>
+                    onNotesEditing={onNotesEditing}
+                    transferTitle={() => transferTitle(title)}
+                    transferDescription={() => transferDescription(description)}/>
             )
         })
 

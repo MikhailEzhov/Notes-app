@@ -13,14 +13,24 @@ class ButtonsEdit extends Component {
 
 
 
+    // Метод: чтобы запускать эти методы при одном клике
+    severalClick = () => {
+        const {transferTitle, transferDescription, onNotesEditing} = this.props; // диструктурием свойства, которые пришли из props
+        transferTitle();
+        transferDescription();
+        onNotesEditing();
+    };
+
+
+
     render() {
-        const {onDelete, buttonsEdit, onNotesEditing} = this.props; // диструктурием свойства, которые пришли из props
+        const {onDelete, buttonsEdit} = this.props; // диструктурием свойства, которые пришли из props
 
         return (
             <div className={buttonsEdit}>
                 <button 
-                    className="buttons-edit__edit" 
-                    onClick={() => {onNotesEditing(); }}></button>
+                    className="buttons-edit__edit"
+                    onClick={this.severalClick}></button>
 
                 <button 
                     className="buttons-edit__delete" 

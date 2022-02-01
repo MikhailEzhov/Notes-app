@@ -54,7 +54,8 @@ class AppMain extends Component {
 
 
     render() {
-        const {data, deleteItem, onAdd} = this.props; // диструктурием свойства, которые пришли из props
+        const {data, deleteItem, onAdd, transferTitle, transferDescription, 
+            currentTitle, currentDescription, onNewTitleDescription} = this.props; // диструктурием свойства, которые пришли из props
         const {notesAdd, notesEditing} = this.state; // диструктурируем состояния из state
 
         return (
@@ -65,7 +66,9 @@ class AppMain extends Component {
                     <NotesList 
                         data={data}
                         onDelete={deleteItem}
-                        onNotesEditing={this.onNotesEditing}/>
+                        onNotesEditing={this.onNotesEditing}
+                        transferTitle={transferTitle}
+                        transferDescription={transferDescription}/>
 
                     {/* добавление заметки */}
                     <button 
@@ -80,7 +83,10 @@ class AppMain extends Component {
                     {/* редактрование заметки */}
                     <NotesEditing 
                         notesEditing={notesEditing}
-                        offNotesEditing={this.offNotesEditing}/>
+                        offNotesEditing={this.offNotesEditing}
+                        currentTitle={currentTitle}
+                        currentDescription={currentDescription}
+                        onNewTitleDescription={onNewTitleDescription}/>
 
                 </div>
             </main>

@@ -12,14 +12,15 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {title: 'UI concepts worth exsisting', description: 'description1', id: 1},
-                {title: 'Book Review : The Design of Everyday Things by Don Norman', description: 'description2', id: 2},
-                {title: 'Animes produced by Ufotable', description: 'description3', id: 3},
-                {title: 'Mangas planned to read', description: 'description4', id: 4},
+                {title: 'Note 1', description: 'Description for note 1', id: 1},
+                {title: 'Note 2', description: 'Description for note 2', id: 2},
+                {title: 'Note 3', description: 'Description for note 3', id: 3},
             ],
             termSearch: '',       // строка поиска, прийдет из комопонента notes-search
+            currentTitle: '',     // текущий title, прийдет по клику на редактирование
+            currentDescription: '',     // текущий description, прийдет по клику на редактирование
         }
-        this.maxId = 5;
+        this.maxId = 4;
     }
 
 
@@ -54,6 +55,44 @@ class App extends Component {
 
 
 
+    // ГЛОБАЛЬНЫЙ МЕТОД: приходит и записывается currentTitle  при клике на редактирование
+    transferTitle = (currentTitle) => {
+        this.setState({currentTitle: currentTitle});
+    }
+    // ГЛОБАЛЬНЫЙ МЕТОД: приходит и записывается currentDescription  при клике на редактирование
+    transferDescription = (currentDescription) => {
+        this.setState({currentDescription: currentDescription});
+    }
+    //==================================================
+
+
+
+    // ГЛОБАЛЬНЫЙ МЕТОД: при редактировании меняет на новый title и новый description
+    onNewTitleDescription = (newTitle, newDescription) => {
+        let currentTitle = this.state.currentTitle;
+        let changedTitle = newTitle;
+        let currentDescription = this.state.currentDescription;
+        let changedDescription = newDescription;
+
+        if (changedTitle == '') {
+            changedTitle = currentTitle;
+        }
+        if (changedDescription == '') {
+            changedDescription = currentDescription;
+        }
+
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.title === currentTitle) {
+                    return {...item, title: changedTitle, description: changedDescription}
+                }
+                return item;
+            })
+        }));
+    }
+
+
+
     // ГЛОБАЛЬНЫЙ МЕТОД для поиска:
     searchNotes = (data, termSearch) => {
         if (termSearch.lenght === 0) {  // если в поиске пусто, то вернем items
@@ -73,7 +112,7 @@ class App extends Component {
 
 
     render() {
-        const {data, termSearch} = this.state; // диструктурируем состояния из state
+        const {data, termSearch, currentTitle, currentDescription} = this.state; // диструктурируем состояния из state
         const visibleData = this.searchNotes(data, termSearch); // видимые данные после фильтрации
 
         return (
@@ -84,7 +123,12 @@ class App extends Component {
                 <AppMain 
                     data={visibleData}
                     deleteItem={this.deleteItem}
-                    onAdd={this.addItem}/>
+                    onAdd={this.addItem}
+                    transferTitle={this.transferTitle}
+                    transferDescription={this.transferDescription}
+                    currentTitle={currentTitle}
+                    currentDescription={currentDescription}
+                    onNewTitleDescription={this.onNewTitleDescription}/>
             </div>
         )
     }

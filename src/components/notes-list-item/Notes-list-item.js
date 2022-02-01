@@ -27,7 +27,7 @@ class NotesListItem extends Component {
 
 
     render() {
-        const {title, description, onDelete, onNotesEditing} = this.props; // диструктурием свойства, которые пришли из props
+        const {title, description, onDelete, onNotesEditing, transferTitle, transferDescription} = this.props; // диструктурием свойства, которые пришли из props
         const {buttonsEdit} = this.state; // диструктурируем состояния из state
 
         return (
@@ -36,7 +36,9 @@ class NotesListItem extends Component {
                 <ButtonsEdit
                     onDelete={onDelete} 
                     buttonsEdit={buttonsEdit ? 'buttons-none' : 'buttons-edit'}
-                    onNotesEditing={onNotesEditing}/>
+                    onNotesEditing={onNotesEditing}
+                    transferTitle={transferTitle}
+                    transferDescription={transferDescription}/>
 
                 <h2 className="notes-item__title">{title}</h2>
                 <p className="notes-item__description">{description}</p>
